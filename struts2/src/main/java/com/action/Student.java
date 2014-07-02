@@ -5,6 +5,8 @@ package com.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.util.SubsetIteratorFilter.Decider;
+
 import com.opensymphony.xwork2.ActionSupport;
 /**
  * @author venkateshp
@@ -14,6 +16,7 @@ public class Student extends ActionSupport {
 	private String name;
 	private String rollNo;
 	public List students;
+	public List<String> studentNames;
 	
 	/**
 	 * @return the students
@@ -64,12 +67,29 @@ public	Student()
 public String execute()
 {
 	students=new ArrayList();
+	studentNames=new ArrayList<String>();
 	students.add(new Student("Venky","59"));
 	students.add(new Student("Nani","29"));
 	students.add(new Student("Ravi","39"));
 	students.add(new Student("pallavi","69"));
+	studentNames.add("Venky");
+	studentNames.add("Nani");
 	return SUCCESS;
 }
+public Decider getStudentsDecider()
+{
+	return new Decider()
+	{
+	
+		  public boolean decide(Object element) throws Exception {
+			  System.out.println("venky");
+	            Student employee = (Student)element;
+	            return employee.getName().equals("Venky");
+	         }
+	};
+}
+}
+
 	
 
-}
+
