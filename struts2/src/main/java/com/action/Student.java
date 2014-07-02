@@ -17,6 +17,7 @@ public class Student extends ActionSupport {
 	private String rollNo;
 	public List students;
 	public List<String> studentNames;
+	public List<Student> listOfstudents;
 	
 	/**
 	 * @return the students
@@ -68,12 +69,15 @@ public String execute()
 {
 	students=new ArrayList();
 	studentNames=new ArrayList<String>();
+	listOfstudents=new ArrayList<Student>();
 	students.add(new Student("Venky","59"));
 	students.add(new Student("Nani","29"));
 	students.add(new Student("Ravi","39"));
 	students.add(new Student("pallavi","69"));
 	studentNames.add("Venky");
 	studentNames.add("Nani");
+	listOfstudents.add(new Student("Gouthami","90"));
+	listOfstudents.add(new Student("Sapthami","80"));
 	return SUCCESS;
 }
 public Decider getStudentsDecider()
